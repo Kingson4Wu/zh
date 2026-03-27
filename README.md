@@ -1,8 +1,8 @@
-# Kingson Wu Technical Blog - Chinese Site
+# Kingson Wu 技术博客中文站
 
-This repository contains the Chinese Hexo blog source for `https://kingson4wu.github.io/zh/`.
+这是中文 Hexo 博客源码仓库，站点地址为 `https://kingson4wu.github.io/zh/`。
 
-## Local development
+## 本地开发
 
 ```bash
 npm install
@@ -10,13 +10,13 @@ npx hexo clean
 npx hexo server
 ```
 
-## Build
+## 构建
 
 ```bash
 npx hexo clean
 npx hexo generate
 ```
 
-## Deploy
+## 部署
 
-Push to the `main` branch to trigger GitHub Actions deployment to the `gh-pages` branch.
+推送到 `main` 分支后，会触发 GitHub Actions 发布到 `gh-pages` 分支。
