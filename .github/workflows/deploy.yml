@@ -1,38 +1,38 @@
-name: Deploy Hexo to Main
+name: Deploy Hexo to GitHub Pages
 
 on:
   push:
     branches:
-      - hexo
+      - main
+
+permissions:
+  contents: write
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout hexo branch
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          ref: hexo
-          submodules: recursive
 
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: '18'
+          cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
-      - name: Configure Git
+      - name: Build site
         run: |
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-
-      - name: Deploy to main branch
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: |
-          # Override deploy repo to use HTTPS with token for CI
-          sed -i "s|git@github.com:Kingson4Wu/kingson4wu.github.io.git|https://x-access-token:${GITHUB_TOKEN}@github.com/Kingson4Wu/kingson4wu.github.io.git|g" _config.yml
           npx hexo clean
-          npx hexo deploy --generate
+          npx hexo generate
+
+      - name: Deploy to gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./public
+          publish_branch: gh-pages
+          force_orphan: true

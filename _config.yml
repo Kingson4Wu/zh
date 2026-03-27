@@ -14,7 +14,7 @@ timezone:
 # URL
 ## If your site is put in a subdirectory, set url as 'http://yoursite.com/child' and root as '/child/'
 url: https://kingson4wu.github.io
-root: /
+root: /zh/
 permalink: :year/:month/:day/:title/
 permalink_defaults:
 
@@ -96,8 +96,8 @@ deploy:
   type: git
   #repository: https://gitee.com/kingson4wu/kingson4wu
   #branch: master
-  repository: git@github.com:Kingson4Wu/kingson4wu.github.io.git
-  branch: main
+  repository: git@github.com:Kingson4Wu/zh.git
+  branch: gh-pages
 #https://github.com/hexojs/hexo-deployer-git
 
 live2d:
@@ -151,4 +151,3 @@ postInfo:
   totalCount: true # 设置站点文章总字数统计为 true.
   min2read: true # 阅读时长.
   readCount: false # 阅读次数.
-
