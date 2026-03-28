@@ -1,5 +1,4 @@
 {% extends '_layout.swig' %}
-{% import '_macro/sidebar.swig' as sidebar_template %}
 
 {% block title %}{{ page.title }} | {{ config.title }}{% endblock %}
 
@@ -7,10 +6,30 @@
 
 {% block content %}
   <style>
+    .page-notes .main-inner {
+      width: auto;
+    }
+
     .page-notes .content-wrap {
+      float: none;
+      width: 100%;
+      max-width: 760px;
+      min-height: auto;
+      margin: 0 auto;
+      padding: 28px 18px 12px;
       background: transparent;
       box-shadow: none;
       border-radius: 0;
+    }
+
+    .page-notes .sidebar {
+      display: none;
+    }
+
+    .page-notes .footer-inner {
+      width: auto;
+      padding-left: 0;
+      padding-right: 0;
     }
 
     .page-notes #content {
@@ -148,6 +167,10 @@
     }
 
     @media (max-width: 767px) {
+      .page-notes .content-wrap {
+        padding: 18px 0 8px;
+      }
+
       .note-title {
         font-size: 18px;
       }
@@ -194,5 +217,4 @@
 {% endblock %}
 
 {% block sidebar %}
-  {{ sidebar_template.render(false) }}
 {% endblock %}
