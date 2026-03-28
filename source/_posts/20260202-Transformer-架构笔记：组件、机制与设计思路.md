@@ -3,6 +3,7 @@ title: Transformer 架构笔记：组件、机制与设计思路
 date: 2026-02-02 16:25:29
 tags: [LLM, AI, 深度学习基础, Transformer, Attention, FFN, Multi-Head]
 mathjax: true
+description: 从 Attention、FFN 与 Multi-Head 三个核心抽象出发，梳理 Transformer 的组件、机制与设计思路。
 ---
 
 >> 以下内容由AI辅助生成

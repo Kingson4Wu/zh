@@ -2,6 +2,7 @@
 title: 浏览器自动化技术全景：CDP、Playwright 与 AI Agent 的架构关系
 date: 2026-03-12 18:44:00
 tags: [LLM, AI, AI-Agent, MCP, SKILL, Web-Browser, CDP, Playwright]
+description: 系统梳理 CDP、Playwright、视觉自动化与 AI Agent 在浏览器自动化体系中的分层关系与适用边界。
 ---
 
 随着 AI Agent、自动化运营、数据抓取和自动化测试的发展，浏览器自动化逐渐成为重要的技术基础设施。当前生态中存在多种技术路线，例如：

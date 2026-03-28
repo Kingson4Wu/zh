@@ -3,6 +3,7 @@ title: LayerNorm：从“为什么要归一化”到“为什么 Transformer 离
 date: 2026-02-02 20:32:20
 tags: [LLM, AI, 深度学习基础, Transformer, LayerNorm]
 mathjax: true
+description: 从数值尺度控制与训练稳定性出发，解释 LayerNorm 的作用及 Transformer 对它的依赖。
 ---
 
 >> 以下内容由AI辅助生成

@@ -3,6 +3,7 @@ title: 残差连接（Residual Connection）：从直觉困境到现代神经网
 date: 2026-01-30 16:11:53
 tags: [LLM, Math, 数学, AI, 深度学习基础, 残差连接]
 mathjax: true
+description: 从深层网络退化问题出发，解释残差连接为何成为现代神经网络中的关键结构。
 ---
 
 >> 以下内容由AI辅助生成

@@ -2,6 +2,7 @@
 title: 从自建 Agent 到 Agent Runtime + Skill：AI 系统架构的演进与收敛
 date: 2026-03-28 17:35:28
 tags: [LLM, AI, AI-Agent, MCP, SKILL, AI工程化, 大模型应用, Orchestration]
+description: 从系统分层视角梳理 AI 应用从自建 Agent 走向 Runtime 与 Skill 组合架构的演进逻辑。
 ---
 
 >> 以下根据个人观点，并由AI辅助整理

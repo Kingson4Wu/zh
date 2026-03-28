@@ -3,6 +3,7 @@ title: 从 One-hot 到 Embedding：词的分布式表示是如何从语料中学
 date: 2026-01-31 15:15:27
 tags: [LLM, AI, 深度学习基础, Embedding, 分布式表示]
 mathjax: true
+description: 从 one-hot 表示讲到分布式表示，解释词向量如何通过语料、损失函数与梯度下降学习得到。
 ---
 
 >> 以下内容由AI辅助生成
@@ -226,5 +227,4 @@ class SGNS(nn.Module):
 * Skip-gram + Negative Sampling 将词向量学习转化为正负样本的区分问题
 * 同一个训练目标同时驱动输入向量与输出向量的学习
 * 通过大量样本的迭代更新，词的语义结构自然在向量空间中形成
-
 

@@ -3,6 +3,7 @@ title: 从 RNN 到 Transformer:序列建模的结构性转变
 date: 2026-01-31 16:55:08
 tags: [LLM, AI, 深度学习基础, Transformer, RNN, LSTM, CNN]
 mathjax: true
+description: 从序列建模需求出发，说明 RNN、CNN 到 Transformer 在结构设计上的关键转变。
 ---
 
 >> 以下内容由AI辅助生成

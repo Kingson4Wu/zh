@@ -2,6 +2,7 @@
 title: 从 Prompt 到碳基 Agentic RAG：AI 时代的人类认知外化
 date: 2026-02-04 16:15:39
 tags: [AI哲学, LLM, AI, 深度学习, Prompt, RAG]
+description: 从 Prompt、Context 与协议出发，讨论 AI 应用背后的人类认知组织能力如何被外化与结构化。
 ---
 
 >> 以下为个人观点，并由AI辅助整理
