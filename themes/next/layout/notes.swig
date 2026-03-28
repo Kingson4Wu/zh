@@ -7,22 +7,33 @@
 
 {% block content %}
   <style>
+    .page-notes .content-wrap {
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .page-notes #content {
+      padding-top: 6px;
+    }
+
     .notes-feed {
-      padding-top: 10px;
+      padding-top: 6px;
     }
 
     .notes-feed-title {
-      margin: 0 0 28px;
-      font-size: 12px;
-      letter-spacing: 0.12em;
+      margin: 0 0 32px;
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: 0.18em;
       text-transform: uppercase;
-      color: #999;
+      color: #9a948c;
     }
 
     .note-entry {
-      margin-bottom: 40px;
-      padding-bottom: 32px;
-      border-bottom: 1px solid #ececec;
+      margin-bottom: 46px;
+      padding-bottom: 38px;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.07);
     }
 
     .note-entry:last-child {
@@ -32,18 +43,19 @@
     }
 
     .note-meta {
-      margin-bottom: 10px;
-      font-size: 12px;
-      letter-spacing: 0.08em;
+      margin-bottom: 12px;
+      font-size: 11px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #999;
+      color: #a39b92;
     }
 
     .note-title {
-      margin: 0 0 14px;
-      font-size: 24px;
-      font-weight: 600;
-      line-height: 1.45;
+      margin: 0 0 16px;
+      font-size: 29px;
+      font-weight: 500;
+      line-height: 1.38;
+      letter-spacing: 0.01em;
     }
 
     .note-title a {
@@ -56,9 +68,11 @@
     }
 
     .note-body {
-      color: #444;
-      font-size: 16px;
-      line-height: 1.9;
+      color: #3f3a36;
+      font-size: 17px;
+      line-height: 2.0;
+      letter-spacing: 0.01em;
+      word-break: break-word;
     }
 
     .note-body p,
@@ -68,7 +82,52 @@
     .note-body pre,
     .note-body figure,
     .note-body table {
-      margin-bottom: 1em;
+      margin-bottom: 1.15em;
+    }
+
+    .note-body h2,
+    .note-body h3,
+    .note-body h4 {
+      margin: 1.8em 0 0.8em;
+      font-weight: 600;
+      line-height: 1.55;
+      color: #2f2a26;
+    }
+
+    .note-body h2 {
+      font-size: 1.18em;
+    }
+
+    .note-body h3 {
+      font-size: 1.08em;
+    }
+
+    .note-body ul,
+    .note-body ol {
+      padding-left: 1.4em;
+    }
+
+    .note-body li {
+      margin-bottom: 0.45em;
+    }
+
+    .note-body blockquote {
+      margin: 1.4em 0;
+      padding: 0.2em 0 0.2em 1.1em;
+      border-left: 2px solid #d7d1c8;
+      color: #6f675f;
+      background: transparent;
+    }
+
+    .note-body pre,
+    .note-body figure.highlight {
+      margin: 1.3em 0;
+      border-radius: 6px;
+      overflow: hidden;
+    }
+
+    .note-body code {
+      font-size: 0.92em;
     }
 
     .note-body > :last-child {
@@ -77,19 +136,32 @@
 
     .note-link {
       display: inline-block;
-      margin-top: 14px;
-      font-size: 13px;
-      color: #777;
+      margin-top: 18px;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #8b847c;
       border-bottom: 0;
     }
 
     .note-link:hover {
-      color: #222;
+      color: #2f2a26;
+    }
+
+    @media (max-width: 767px) {
+      .note-title {
+        font-size: 24px;
+      }
+
+      .note-body {
+        font-size: 16px;
+        line-height: 1.9;
+      }
     }
   </style>
 
   <section id="posts" class="notes-feed">
-    <p class="notes-feed-title">Notes</p>
+    <p class="notes-feed-title">随记</p>
     {% if page.posts.length %}
       {% for post in page.posts %}
         <article class="note-entry" itemscope itemtype="http://schema.org/Article">
@@ -109,13 +181,13 @@
             {{ post.content }}
           </div>
 
-          <a class="note-link" href="{{ url_for(post.path) }}">Permalink</a>
+          <a class="note-link" href="{{ url_for(post.path) }}">单篇链接</a>
         </article>
       {% endfor %}
     {% else %}
       <div class="post-block page">
         <div class="post-body">
-          <p>还没有 Notes。</p>
+          <p>还没有随记。</p>
         </div>
       </div>
     {% endif %}
