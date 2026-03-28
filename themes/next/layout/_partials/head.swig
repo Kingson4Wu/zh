@@ -124,6 +124,11 @@
   })
 }}
 
+{% if page.type === 'notes' and page.permalink %}
+  <meta property="og:url" content="{{ page.permalink }}">
+  <meta property="twitter:url" content="{{ page.permalink }}">
+{% endif %}
+
 
 {# Export some HEXO Configurations to Front-End #}
 <script type="text/javascript" id="hexo.configurations">
