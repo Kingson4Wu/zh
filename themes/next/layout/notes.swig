@@ -6,6 +6,81 @@
 
 {% block content %}
   <style>
+    .page-notes .header {
+      width: auto;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    .page-notes .header-inner {
+      position: relative;
+      width: 100%;
+      padding: 22px 18px 0;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+    }
+
+    .page-notes .site-meta {
+      padding: 0 0 8px;
+      color: inherit;
+      background: transparent;
+      box-shadow: none;
+    }
+
+    .page-notes .brand,
+    .page-notes .brand:hover {
+      color: #2f2a26;
+    }
+
+    .page-notes .site-title {
+      font-size: 24px;
+      letter-spacing: 0;
+    }
+
+    .page-notes .site-subtitle {
+      margin: 6px 0 0;
+      color: #8f8881;
+      font-size: 12px;
+    }
+
+    .page-notes .site-nav {
+      display: block !important;
+      margin-top: 10px;
+      border-top: 0;
+    }
+
+    .page-notes .menu {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 18px;
+      margin-top: 0;
+      text-align: left;
+    }
+
+    .page-notes .menu .menu-item {
+      display: inline-block;
+      margin: 0;
+    }
+
+    .page-notes .menu .menu-item a {
+      padding: 0;
+      font-size: 12px;
+      color: #6e675f;
+      text-align: left;
+      background: transparent;
+      border-bottom: 0;
+    }
+
+    .page-notes .menu .menu-item a:hover {
+      color: #2f2a26;
+      background: transparent;
+    }
+
+    .page-notes .menu-item-active a:after {
+      display: none;
+    }
+
     .page-notes .main-inner {
       width: auto;
     }
@@ -167,6 +242,14 @@
     }
 
     @media (max-width: 767px) {
+      .page-notes .header-inner {
+        padding: 16px 0 0;
+      }
+
+      .page-notes .site-title {
+        font-size: 20px;
+      }
+
       .page-notes .content-wrap {
         padding: 18px 0 8px;
       }
