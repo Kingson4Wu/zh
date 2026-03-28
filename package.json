@@ -6,7 +6,6 @@
     "version": "6.3.0"
   },
   "dependencies": {
-    "gitalk": "^1.7.2",
     "hexo": "^6.2.0",
     "hexo-asset-image": "github:CodeFalling/hexo-asset-image",
     "hexo-deployer-git": "^3.0.0",
