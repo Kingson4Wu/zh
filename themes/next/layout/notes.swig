@@ -52,7 +52,7 @@
 
     .note-title {
       margin: 0 0 12px;
-      font-size: 22px;
+      font-size: 20px;
       font-weight: 520;
       line-height: 1.34;
       letter-spacing: 0.01em;
@@ -68,7 +68,7 @@
     }
 
     .note-body {
-      color: #45403b;
+      color: #514a44;
       font-size: 15px;
       line-height: 1.82;
       letter-spacing: 0;
@@ -149,7 +149,7 @@
 
     @media (max-width: 767px) {
       .note-title {
-        font-size: 20px;
+        font-size: 18px;
       }
 
       .note-body {
