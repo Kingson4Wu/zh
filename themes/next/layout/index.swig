@@ -10,7 +10,7 @@
 
 {% block content %}
   <section id="posts" class="posts-expand">
-    {% for post in page.posts %}
+    {% for post in exclude_notes(page.posts) %}
       {{ post_template.render(post, true) }}
     {% endfor %}
   </section>

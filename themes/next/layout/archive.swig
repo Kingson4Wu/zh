@@ -7,6 +7,8 @@
 {% block page_class %}page-archive{% endblock %}
 
 {% block content %}
+  {% set archive_posts = exclude_notes(page.posts) %}
+  {% set archive_posts_length = exclude_notes(site.posts).length %}
 
   {#####################}
   {### ARCHIVE BLOCK ###}
@@ -17,7 +19,7 @@
 
       <span class="archive-page-counter">
         {% set cheers %}
-        {% set posts_length = site.posts.length %}
+        {% set posts_length = archive_posts_length %}
         {% if posts_length > 210 %} {% set cheers = 'excellent' %}
           {% elif posts_length > 130 %} {% set cheers = 'great' %}
           {% elif posts_length > 80 %} {% set cheers = 'good' %}
@@ -26,10 +28,10 @@
         {% else %}
           {% set cheers = 'um' %}
         {% endif %}
-        {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", site.posts.length) }} {{ __('keep_on') }}
+        {{ __('cheers.' + cheers) }}! {{ _p("counter.archive_posts", archive_posts_length) }} {{ __('keep_on') }}
       </span>
 
-      {% for post in page.posts %}
+      {% for post in archive_posts %}
 
         {# Show year #}
         {% set year %}
