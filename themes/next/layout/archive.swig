@@ -8,7 +8,7 @@
 
 {% block content %}
   {% set archive_posts = exclude_notes(page.posts) %}
-  {% set archive_posts_length = exclude_notes(site.posts).length %}
+  {% set archive_posts_length = visible_post_count(site.posts) %}
 
   {#####################}
   {### ARCHIVE BLOCK ###}

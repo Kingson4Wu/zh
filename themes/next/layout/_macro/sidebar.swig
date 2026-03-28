@@ -46,8 +46,9 @@
 
           <nav class="site-state motion-element">
             {% set visible_posts = exclude_notes(site.posts) %}
+            {% set visible_posts_count = visible_post_count(site.posts) %}
 
-            {% if config.archive_dir != '/' and visible_posts.length > 0 %}
+            {% if config.archive_dir != '/' and visible_posts_count > 0 %}
               <div class="site-state-item site-state-posts">
               {% if theme.menu.archives %}
 <a href="{{url_for(theme.menu.archives.split('||')[0])| trim}}">                
@@ -55,7 +56,7 @@
               {% else %}
                 <a href="{{ url_for(config.archive_dir) }}">
               {% endif %}
-                  <span class="site-state-item-count">{{ visible_posts.length }}</span>
+                  <span class="site-state-item-count">{{ visible_posts_count }}</span>
                   <span class="site-state-item-name">{{ __('state.posts') }}</span>
                 </a>
               </div>
