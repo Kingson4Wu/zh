@@ -7,3 +7,4 @@
 {% include 'gitment.swig' %}
 {% include 'valine.swig' %}
 {% include 'gitalk.swig' %}
+{% include 'giscus.swig' %}

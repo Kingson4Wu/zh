@@ -813,11 +813,17 @@ images: images
 version: 5.1.4
 
 gitalk:
-  enable: true
-  githubID: kingson4wu 
-  repo: kingson4wu.github.io
-  ClientID: 3416434437f9f4e049bd
-  ClientSecret: a52d69bf90cb77f81a26d135e03dd0f4869fbf84
-  adminUser: kingson4wu
-  distractionFreeMode: true
+  enable: false
 
+giscus:
+  enable: true
+  repo: Kingson4Wu/kingson4wu.github.io
+  repo_id: MDEwOlJlcG9zaXRvcnkzODA2OTA1Njg=
+  category: General
+  category_id: DIC_kwDOFrDgiM4C5V0C
+  mapping: pathname
+  reactions_enabled: 1
+  input_position: top
+  lang: zh-CN
+  theme_light: light
+  theme_dark: dark_dimmed

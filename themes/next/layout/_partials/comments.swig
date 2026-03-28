@@ -6,6 +6,10 @@
            data-title="{{ page.title }}" data-url="{{ page.permalink }}">
       </div>
     </div>
+  {% elseif theme.giscus.enable %}
+    <div class="comments" id="comments">
+      <div id="giscus-container"></div>
+    </div>
   {% elseif theme.gitalk.enable %}
     <div id="gitalk-container"></div>
   {% elseif theme.facebook_sdk.enable and theme.facebook_comments_plugin.enable %}
