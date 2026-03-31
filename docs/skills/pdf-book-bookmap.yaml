@@ -1,0 +1,43 @@
+# PDF Book Configuration
+# Edit this file to change which posts are included and their order.
+# Run: python3 content/clean_articles.py
+
+# ── Book metadata (used by templates) ──────────────────────────────────────
+title: "「AI 时代的思考」"
+subtitle: "从认知革命到商业落地"
+author: "Kingson Wu"
+date: "2026 年 3 月"
+
+# Disclaimer text shown on cover page
+disclaimer: |
+  ⚠ 本册写于 2025–2026 年，部分观点可能已有变化、存在错误，
+  或视角狭隘、覆盖不全。请批判性阅读。
+
+# Foreword: leave empty string "" to use templates/foreword.html
+#           or paste markdown body here for auto-generation
+foreword: ""
+
+# Afterword: leave empty string "" to use templates/afterword.html
+#            or paste markdown body here for auto-generation
+afterword: ""
+
+# ── Chapters ───────────────────────────────────────────────────────────────
+# Format: [source_filename.md, display_title]
+# Source files are relative to source/_posts/
+# Display title is shown in TOC, chapter heading, and running header
+
+chapters:
+  - ["20241231-AI工业革命下的若干思考.md", "AI工业革命下的若干思考"]
+  - ["20250213-深度学习为什么能学习并做对.md", "深度学习为什么能学习并做对"]
+  - ["20260204-人类与模型的共同特征：直觉先行，解释在后.md", "人类与模型的共同特征：直觉先行，解释在后"]
+  - ["20250213-关于AI替代人类工作的问题.md", "关于AI替代人类工作的问题"]
+  - ["20260331-技术进步与分配失衡：AI时代的结构性矛盾.md", "技术进步与分配失衡：AI时代的结构性矛盾"]
+  - ["20260204-从-Prompt-到碳基-Agentic-RAG：AI-时代的人类认知外化.md", "从Prompt到碳基Agentic RAG：AI时代的人类认知外化"]
+  - ["20260209-AI-与学习型人际关系的变化.md", "AI与学习型人际关系的变化"]
+  - ["20260204-AI-能否创造真正的新事物.md", "AI能否创造真正的新事物"]
+  - ["20260209-AI生成内容时代：原创性、作者身份与创作价值的再定义.md", "AI生成内容时代：原创性、作者身份与创作价值的再定义"]
+  - ["20260225-生成式AI的概率本质与创新边界：从一个具体任务说起.md", "生成式AI的概率本质与创新边界：从一个具体任务说起"]
+  - ["20260328-从自建-Agent-到-Agent-Runtime-Skill：AI-系统架构的演进与收敛.md", "从自建Agent到Agent Runtime + Skill：AI系统架构的演进与收敛"]
+  - ["20260226-将执行路径固化为资产：一种面向长期运行的-AI-架构.md", "将执行路径固化为资产：一种面向长期运行的AI架构"]
+  - ["20260308-大模型时代，中小公司如何寻找-AI-竞争空间.md", "大模型时代：中小公司如何寻找AI竞争空间"]
+  - ["20260331-从-Skill-化到控制权：AI-系统中的能力分层与资产保护.md", "从Skill化到控制权：AI系统中的能力分层与资产保护"]

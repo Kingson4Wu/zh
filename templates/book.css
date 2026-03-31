@@ -1,0 +1,167 @@
+/* =========================================
+   AI 思考小册子 — 印刷样式表
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;700&display=swap');
+
+* { box-sizing: border-box; }
+
+body {
+  font-family: "Songti SC", "STHeiti Medium", serif;
+  font-size: 10.5pt;
+  line-height: 1.85;
+  color: #1a1a1a;
+  margin: 0;
+  padding: 0;
+  background: white;
+}
+
+/* =========================================
+   @page：水印 + 页码
+   ========================================= */
+@page {
+  size: A4;
+  margin: 2.2cm 2.8cm 2.5cm 2.8cm;
+  @top-left {
+    content: none;
+    font-size: 8pt;
+    color: #aaa;
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 0.15cm;
+    vertical-align: bottom;
+  }
+  @top-right {
+    content: counter(page);
+    font-size: 8pt;
+    color: #bbb;
+    vertical-align: bottom;
+  }
+  @bottom-right {
+    content: "Kingson's AI Notes · 2026";
+    font-style: italic;
+    font-size: 8pt;
+    color: #cccccc;
+  }
+}
+
+/* =========================================
+   封面
+   ========================================= */
+.cover { page-break-after: always; page-break-inside: avoid; text-align: center; padding-top: 5cm; padding-bottom: 5cm; }
+
+.cover-accent-bar {
+  width: 3px;
+  height: 5.5cm;
+  background: #111;
+  margin: 0 auto 1.2cm auto;
+}
+
+.cover-rule { width: 5cm; height: 1px; background: #1a1a1a; margin: 0.6cm auto; }
+
+.cover-title {
+  font-size: 30pt;
+  font-weight: bold;
+  letter-spacing: 0.08em;
+  color: #000;
+  margin: 0 0 0.3cm 0;
+}
+
+.cover-subtitle { font-size: 14pt; letter-spacing: 0.12em; color: #333; margin: 0 0 0.6cm 0; }
+
+.cover-author { font-size: 11pt; color: #222; margin: 0.5cm 0 0; letter-spacing: 0.1em; }
+
+.cover-date { font-size: 10pt; color: #555; margin: 0.2cm 0 0; letter-spacing: 0.05em; }
+
+.cover-disclaimer { margin-top: 1.8cm; font-size: 9pt; color: #777; line-height: 1.7; }
+.cover-disclaimer p { margin: 0 0 0.2em 0; text-align: center; text-indent: 0; }
+
+/* =========================================
+   目录
+   ========================================= */
+.toc { page-break-after: always; page-break-inside: avoid; padding: 1cm 0; }
+.toc-title { font-size: 20pt; font-weight: bold; text-align: center; margin-bottom: 1.2cm; letter-spacing: 0.15em; }
+.toc-part { margin-bottom: 0.8cm; }
+.part-title { font-size: 13pt; font-weight: bold; color: #1a1a1a; margin-bottom: 0.3cm; padding-bottom: 0.15cm; border-bottom: 1px solid #1a1a1a; }
+.toc-chapters { list-style: none; padding-left: 0.8cm; margin: 0.2cm 0 0; }
+.toc-chapters li { font-size: 10pt; line-height: 1.7; color: #333; margin-bottom: 0.1cm; }
+
+/* =========================================
+   前言 / 后记
+   ========================================= */
+.foreword, .afterword { page-break-before: always; }
+
+.section-title { font-size: 18pt; font-weight: bold; letter-spacing: 0.15em; margin-bottom: 0.8cm; text-align: center; }
+
+.foreword p, .afterword p { text-indent: 2em; margin: 0 0 0.6em 0; text-align: justify; }
+.foreword strong, .afterword strong { font-weight: bold; }
+.foreword p:first-child, .afterword p:first-child { text-indent: 0; }
+.foreword p:first-child::first-letter, .afterword p:first-child::first-letter { font-size: 14pt; font-weight: bold; }
+
+/* =========================================
+   章节
+   ========================================= */
+.chapter { page-break-inside: avoid; margin: 0; }
+
+.chapter-title {
+  font-size: 16pt;
+  font-weight: bold;
+  margin: 0 0 0.6cm 0;
+  padding-bottom: 0.3cm;
+  border-bottom: 1px solid #ccc;
+  color: #111;
+}
+
+/* =========================================
+   标题层级
+   ========================================= */
+h2 { font-size: 12pt; font-weight: bold; margin: 0.8em 0 0.4em 0; color: #1a1a1a; }
+h3 { font-size: 10.5pt; font-weight: bold; margin: 0.6em 0 0.3em 0; color: #333; }
+
+/* =========================================
+   正文段落
+   ========================================= */
+p { margin: 0 0 0.5em 0; text-align: justify; }
+
+/* =========================================
+   引用块
+   ========================================= */
+blockquote { margin: 0.6em 2em; padding: 0.4em 0.8em; background: #f6f6f6; border-left: 3px solid #999; font-size: 10pt; color: #333; }
+blockquote p { margin: 0; text-align: left; text-indent: 0; }
+
+/* =========================================
+   列表
+   ========================================= */
+ul, ol { margin: 0.4em 0 0.6em 0; padding-left: 1.5em; }
+li { margin-bottom: 0.25em; line-height: 1.7; }
+li p { margin: 0; }
+
+/* =========================================
+   代码块
+   ========================================= */
+pre { background: #f5f5f5; border: 1px solid #e0e0e0; padding: 0.6em 0.8em; margin: 0.6em 0; font-family: "Menlo", "Courier New", monospace; font-size: 8.5pt; line-height: 1.6; white-space: pre; }
+code { font-family: "Menlo", "Courier New", monospace; font-size: 8.5pt; background: #f0f0f0; padding: 0.1em 0.3em; border-radius: 2px; }
+pre code { background: none; padding: 0; }
+
+/* =========================================
+   表格
+   ========================================= */
+table { border-collapse: collapse; width: 100%; margin: 0.6em 0; font-size: 9.5pt; }
+th, td { border: 1px solid #ccc; padding: 0.35em 0.6em; text-align: left; }
+th { background: #f0f0f0; font-weight: bold; }
+tr:nth-child(even) td { background: #fafafa; }
+
+/* =========================================
+   分割线
+   ========================================= */
+hr { border: none; border-top: 1px solid #ddd; margin: 0.8em 0; }
+
+/* =========================================
+   加粗 / 斜体
+   ========================================= */
+strong { font-weight: bold; }
+em { font-style: italic; }
+
+/* =========================================
+   图片
+   ========================================= */
+img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }

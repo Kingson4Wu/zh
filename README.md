@@ -19,4 +19,5 @@ npx hexo generate
 
 ## 部署
 
-推送到 `main` 分支后，会触发 GitHub Actions 发布到 `gh-pages` 分支。
+推送到 `main` 分支后，触发 GitHub Actions → GitHub Pages（`actions/deploy-pages`）。
+
