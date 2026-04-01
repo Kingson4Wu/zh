@@ -80,10 +80,10 @@ body {
    ========================================= */
 .toc { page-break-after: always; page-break-inside: avoid; padding: 1cm 0; }
 .toc-title { font-size: 20pt; font-weight: bold; text-align: center; margin-bottom: 1.2cm; letter-spacing: 0.15em; }
-.toc-part { margin-bottom: 0.8cm; }
-.part-title { font-size: 13pt; font-weight: bold; color: #1a1a1a; margin-bottom: 0.3cm; padding-bottom: 0.15cm; border-bottom: 1px solid #1a1a1a; }
-.toc-chapters { list-style: none; padding-left: 0.8cm; margin: 0.2cm 0 0; }
-.toc-chapters li { font-size: 10pt; line-height: 1.7; color: #333; margin-bottom: 0.1cm; }
+.toc-part { margin-bottom: 0.6cm; }
+.part-title { font-size: 12pt; font-weight: bold; color: #1a1a1a; margin-bottom: 0.25cm; padding-bottom: 0.12cm; border-bottom: 1px solid #1a1a1a; }
+.toc-chapters { list-style: none; padding-left: 0.8cm; margin: 0.05cm 0 0; }
+.toc-chapters li { font-size: 9.5pt; line-height: 1.5; color: #333; margin-bottom: 0.05cm; }
 
 /* =========================================
    前言 / 后记
@@ -92,7 +92,7 @@ body {
 
 .section-title { font-size: 18pt; font-weight: bold; letter-spacing: 0.15em; margin-bottom: 0.8cm; text-align: center; }
 
-.foreword p, .afterword p { text-indent: 2em; margin: 0 0 0.6em 0; text-align: justify; }
+.foreword p, .afterword p { text-indent: 2em; margin: 0 0 0.6em 0; text-align: left; }
 .foreword strong, .afterword strong { font-weight: bold; }
 .foreword p:first-child, .afterword p:first-child { text-indent: 0; }
 .foreword p:first-child::first-letter, .afterword p:first-child::first-letter { font-size: 14pt; font-weight: bold; }
@@ -114,13 +114,25 @@ body {
 /* =========================================
    标题层级
    ========================================= */
-h2 { font-size: 12pt; font-weight: bold; margin: 0.8em 0 0.4em 0; color: #1a1a1a; }
-h3 { font-size: 10.5pt; font-weight: bold; margin: 0.6em 0 0.3em 0; color: #333; }
+h2 {
+  font-family: "Songti SC", "STHeiti Medium", serif;
+  font-size: 11pt;
+  font-weight: bold;
+  margin: 0.6em 0 0.3em 0;
+  color: #1a1a1a;
+}
+h3 {
+  font-family: "Songti SC", "STHeiti Medium", serif;
+  font-size: 10pt;
+  font-weight: bold;
+  margin: 0.5em 0 0.25em 0;
+  color: #333;
+}
 
 /* =========================================
    正文段落
    ========================================= */
-p { margin: 0 0 0.5em 0; text-align: justify; }
+p { margin: 0 0 0.5em 0; text-align: left; }
 
 /* =========================================
    引用块

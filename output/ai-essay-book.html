@@ -87,10 +87,10 @@ body {
    ========================================= */
 .toc { page-break-after: always; page-break-inside: avoid; padding: 1cm 0; }
 .toc-title { font-size: 20pt; font-weight: bold; text-align: center; margin-bottom: 1.2cm; letter-spacing: 0.15em; }
-.toc-part { margin-bottom: 0.8cm; }
-.part-title { font-size: 13pt; font-weight: bold; color: #1a1a1a; margin-bottom: 0.3cm; padding-bottom: 0.15cm; border-bottom: 1px solid #1a1a1a; }
-.toc-chapters { list-style: none; padding-left: 0.8cm; margin: 0.2cm 0 0; }
-.toc-chapters li { font-size: 10pt; line-height: 1.7; color: #333; margin-bottom: 0.1cm; }
+.toc-part { margin-bottom: 0.6cm; }
+.part-title { font-size: 12pt; font-weight: bold; color: #1a1a1a; margin-bottom: 0.25cm; padding-bottom: 0.12cm; border-bottom: 1px solid #1a1a1a; }
+.toc-chapters { list-style: none; padding-left: 0.8cm; margin: 0.05cm 0 0; }
+.toc-chapters li { font-size: 9.5pt; line-height: 1.5; color: #333; margin-bottom: 0.05cm; }
 
 /* =========================================
    前言 / 后记
@@ -99,7 +99,7 @@ body {
 
 .section-title { font-size: 18pt; font-weight: bold; letter-spacing: 0.15em; margin-bottom: 0.8cm; text-align: center; }
 
-.foreword p, .afterword p { text-indent: 2em; margin: 0 0 0.6em 0; text-align: justify; }
+.foreword p, .afterword p { text-indent: 2em; margin: 0 0 0.6em 0; text-align: left; }
 .foreword strong, .afterword strong { font-weight: bold; }
 .foreword p:first-child, .afterword p:first-child { text-indent: 0; }
 .foreword p:first-child::first-letter, .afterword p:first-child::first-letter { font-size: 14pt; font-weight: bold; }
@@ -121,13 +121,25 @@ body {
 /* =========================================
    标题层级
    ========================================= */
-h2 { font-size: 12pt; font-weight: bold; margin: 0.8em 0 0.4em 0; color: #1a1a1a; }
-h3 { font-size: 10.5pt; font-weight: bold; margin: 0.6em 0 0.3em 0; color: #333; }
+h2 {
+  font-family: "Songti SC", "STHeiti Medium", serif;
+  font-size: 11pt;
+  font-weight: bold;
+  margin: 0.6em 0 0.3em 0;
+  color: #1a1a1a;
+}
+h3 {
+  font-family: "Songti SC", "STHeiti Medium", serif;
+  font-size: 10pt;
+  font-weight: bold;
+  margin: 0.5em 0 0.25em 0;
+  color: #333;
+}
 
 /* =========================================
    正文段落
    ========================================= */
-p { margin: 0 0 0.5em 0; text-align: justify; }
+p { margin: 0 0 0.5em 0; text-align: left; }
 
 /* =========================================
    引用块
@@ -272,7 +284,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 
 </blockquote>
 </blockquote>
-<h1 id="ai对就业的双重影响">AI对就业的双重影响</h1>
+<h2 id="ai对就业的双重影响">AI对就业的双重影响</h2>
 <ul>
 <li>AI技术对就业市场带来了创造效应和破坏效应：
 <ul>
@@ -280,7 +292,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 <li>破坏效应：AI替代了许多重复性、规则性较强的岗位。某些中等技能的岗位如流水线操作、传统文秘工作可能面临消失的风险。</li>
 </ul></li>
 </ul>
-<h1 id="历史视角被替代的人何去何从">历史视角：被替代的人何去何从</h1>
+<h2 id="历史视角被替代的人何去何从">历史视角：被替代的人何去何从</h2>
 <ul>
 <li><p>随着AI技术的发展，未来许多人的工作将不可避免地被替代，这其中包括一部分程序员，但相较而言，更多非程序员的工作可能会首当其冲。然而，那些更擅长使用并深刻理解AI工具的人将更有可能保住自己的职位。</p></li>
 <li><p>回顾工业革命，技术进步曾一度导致大批劳动者失业，许多人因无法适应新变化而成为时代的“牺牲品”，收入锐减。</p></li>
@@ -292,21 +304,21 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 <li>有一定资产的群体，应学会投资，通过多样化方式应对收入变化。</li>
 </ul></li>
 </ul>
-<h1 id="正面效应">正面效应</h1>
+<h2 id="正面效应">正面效应</h2>
 <ul>
 <li>催生新型岗位：AI技术完善后，将需要大量擅长操作和优化AI工具的人才。</li>
 <li>解放低级劳动：AI让人类摆脱低级脑力劳动，从而获得更高工资和更有意义的工作体验。</li>
 <li>效率提升与“去内卷”：生产效率的提升可能减少“内卷”现象，并通过政策调整减轻劳动者的工作压力。</li>
 <li>关于工作和财富再分配问题：如果AI真的让生产效率大幅提升，我们可以期待未来的福利制度更加完善，比如减少工作时间、增加带薪假期，甚至实现“无工作”状态也未必是幻想。</li>
 </ul>
-<h1 id="社会与政策层面">社会与政策层面</h1>
+<h2 id="社会与政策层面">社会与政策层面</h2>
 <ul>
 <li>加强教育培训：推动技能提升和再教育计划，使劳动者适应AI时代的工作需求。</li>
 <li>优化产业结构：加速产业转型升级，为社会创造更多高附加值就业机会。</li>
 <li>完善社会保障：建立健全失业保障制度，帮助因AI技术变革失业的劳动者渡过难关。</li>
 <li>政策引导：通过政策规范AI技术的合理应用，避免过度自动化对就业的过度冲击。</li>
 </ul>
-<h1 id="总结">总结</h1>
+<h2 id="总结">总结</h2>
 <ul>
 <li>AI技术的快速发展是一把双刃剑，它既对传统就业模式提出了挑战，也为社会提供了提高效率、优化劳动分工的契机。从社会视角看，技术进步不可逆，但我们可以通过政策调整和个人适应来尽量减小负面影响。面对不可避免的变革，积极调整心态、提升能力，是每个人应对未来的重要策略。同时，历史告诉我们，每一次技术浪潮都会带来新的机遇，只要抓住变化的窗口期，未来依然充满希望。</li>
 </ul>
@@ -314,14 +326,14 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 
 <div class="chapter">
 <h1 class="chapter-title">深度学习为什么能学习并做对</h1>
-<h1 id="我的理解">我的理解</h1>
+<h2 id="我的理解">我的理解</h2>
 <ul>
 <li>目前无法解释为什么深度学习可以给出答案，只能大概解释为什么它能学习</li>
 <li>这就相当于：我不能解释为什么这个人是通过什么做对这道题的，我只能解释他有正常的学习能力以及合适的学习资料，所以他自己能学习并做对题目</li>
 <li>所以深度学习是怎么给出答案的，后续或许应该由它本身来告诉我们。</li>
 <li>依据不同人的认知水平，来告诉我们它通过学习所发现的规律。同时人类通过它能快速学习发现事物规律的能力，来进一步帮助提升人类的认知。</li>
 </ul>
-<h1 id="ai对我理解的看法">AI对我理解的看法</h1>
+<h2 id="ai对我理解的看法">AI对我理解的看法</h2>
 <blockquote>
 <blockquote>
 
@@ -340,7 +352,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 <li>深度学习不只是一个工具，它还可能是一个不断反馈、不断自我优化的过程，给我们打开了认知的新窗口。</li>
 </ul></li>
 </ul>
-<h1 id="ai自己对这个问题的看法">AI自己对这个问题的看法</h1>
+<h2 id="ai自己对这个问题的看法">AI自己对这个问题的看法</h2>
 <blockquote>
 <blockquote>
 
@@ -588,7 +600,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 <p><strong>我们并不是在学习如何“使用 AI”，而是在学习如何把人类原本隐性的认知组织能力显式化、结构化，并交给机器执行。</strong></p>
 <p>本文从 Prompt engineering、Context engineering 与协议标准出发，探讨 AI 应用的底层逻辑，以及“碳基 Agentic RAG”在当前阶段的角色。</p>
 <hr />
-<h1 id="一promptcontext-与协议ai-使用的三大基础结构">一、Prompt、Context 与协议：AI 使用的三大基础结构</h1>
+<h2 id="一promptcontext-与协议ai-使用的三大基础结构">一、Prompt、Context 与协议：AI 使用的三大基础结构</h2>
 <p>在应用层，AI 的高效使用建立在三个核心要素之上：</p>
 <ul>
 <li><strong>Prompt engineering</strong>：把意图说清楚</li>
@@ -649,7 +661,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 <p><strong>标准的出现，是为了复用已被验证的思考方式，同时也是抢占先发优势的体现。</strong></p>
 </blockquote>
 <hr />
-<h1 id="二体系演进从对话技巧到认知基础设施">二、体系演进：从对话技巧到认知基础设施</h1>
+<h2 id="二体系演进从对话技巧到认知基础设施">二、体系演进：从对话技巧到认知基础设施</h2>
 <p>当 Prompt、Context 与协议逐渐稳定，AI 使用开始从“对话技巧”转向“系统设计”。这意味着一个重要转变：</p>
 <p><strong>从单次对话 → 持续运行的认知系统</strong></p>
 <hr />
@@ -691,7 +703,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 </ul>
 <p>角色从操作执行逐渐转向系统设计与监督。</p>
 <hr />
-<h1 id="三碳基-agentic-rag人机协作的持续形态">三、碳基 Agentic RAG：人机协作的持续形态</h1>
+<h2 id="三碳基-agentic-rag人机协作的持续形态">三、碳基 Agentic RAG：人机协作的持续形态</h2>
 <p>在当前阶段，一个明显现象已经出现：同一模型，不同使用者的产出质量差异显著。</p>
 <p>差异主要来自：信息筛选能力、重点提炼能力、目标判断能力、上下文控制能力。</p>
 <p>因此可以得到一个更精确的描述：</p>
@@ -757,7 +769,7 @@ img { max-width: 100%; height: auto; display: block; margin: 0.6em auto; }
 </blockquote>
 <p>过去，这些能力的差异主要在特定岗位中体现。现在，它们直接决定了每个人使用 AI 工具的效果。</p>
 <hr />
-<h1 id="四回到本质认知结构的外化">四、回到本质：认知结构的外化</h1>
+<h2 id="四回到本质认知结构的外化">四、回到本质：认知结构的外化</h2>
 <p>综合上述讨论，可以得到更严谨的结论：</p>
 <ul>
 <li><strong>Prompt engineering</strong>：显式化表达结构</li>

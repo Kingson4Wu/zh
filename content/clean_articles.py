@@ -75,6 +75,9 @@ def md_to_html(md_text: str) -> str:
 
 def build_chapter_html(title: str, body_html: str, idx: int) -> str:
     body_html = clean_html(body_html)
+    # Convert article <h1> (non-chapter-title) to <h2> for proper heading hierarchy
+    body_html = re.sub(r'<h1(?![^>]*class="chapter-title")([^>]*)>', r'<h2\1>', body_html)
+    body_html = re.sub(r'</h1>', '</h2>', body_html)
     padded = f"{idx:02d}"
     return f'<div class="chapter">\n<h1 class="chapter-title">{title}</h1>\n{body_html}\n</div>\n'
 
