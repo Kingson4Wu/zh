@@ -9,7 +9,7 @@
 vim docs/skills/pdf-book-bookmap.yaml
 
 # 2. 一键构建
-bash scripts/build-pdf-book.sh
+bash build-pdf-book.sh
 # 输出: output/AI思考小册子-2026.pdf
 ```
 
