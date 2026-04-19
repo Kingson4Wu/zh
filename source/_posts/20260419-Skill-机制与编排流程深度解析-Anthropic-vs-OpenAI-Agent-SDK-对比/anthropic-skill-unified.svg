@@ -1,0 +1,103 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 900" width="960" height="900">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="ac" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#5a5a5a"/>
+    </marker>
+    <filter id="s">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#00000008"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="900" fill="#f8f6f3"/>
+
+  <text x="480" y="35" text-anchor="middle" fill="#1a1a1a" font-size="18" font-weight="700">Anthropic Skill System</text>
+  <text x="480" y="55" text-anchor="middle" fill="#6a6a6a" font-size="12">Phase 1: Discovery &amp; Loading  |  Phase 2: Execution  |  Key: contextModifier = unique runtime permission grant</text>
+
+  <text x="30" y="78" fill="#6a6a6a" font-size="11" font-weight="600">PHASE 1 — Discovery &amp; Loading</text>
+  <rect x="30" y="85" width="155" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="107" y="106" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Managed</text>
+  <text x="107" y="121" text-anchor="middle" fill="#4a4a4a" font-size="10">~/.claude/skills</text>
+  <line x1="107" y1="129" x2="107" y2="148" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="207" y="85" width="155" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="284" y="106" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">User</text>
+  <text x="284" y="121" text-anchor="middle" fill="#4a4a4a" font-size="10">~/.claude/skills</text>
+  <line x1="284" y1="129" x2="284" y2="148" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="384" y="85" width="155" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="461" y="106" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Project</text>
+  <text x="461" y="121" text-anchor="middle" fill="#4a4a4a" font-size="10">&lt;cwd&gt;/.claude/skills</text>
+  <line x1="461" y1="129" x2="461" y2="148" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="561" y="85" width="155" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="638" y="106" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Additional</text>
+  <text x="638" y="121" text-anchor="middle" fill="#4a4a4a" font-size="10">--add-dir</text>
+  <line x1="638" y1="129" x2="638" y2="148" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="738" y="85" width="155" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2"/>
+  <text x="815" y="106" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Legacy</text>
+  <text x="815" y="121" text-anchor="middle" fill="#4a4a4a" font-size="10">.claude/commands/</text>
+  <line x1="815" y1="129" x2="815" y2="148" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="220" y="152" width="520" height="52" rx="10" ry="10" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#s)"/>
+  <text x="480" y="174" text-anchor="middle" fill="#1a1a1a" font-size="14" font-weight="600">Parallel Scan + Deduplication (realpath, first-wins)</text>
+  <text x="480" y="193" text-anchor="middle" fill="#5a5a5a" font-size="11">Frontmatter only at startup — full content loaded on first invocation</text>
+  <line x1="480" y1="204" x2="480" y2="228" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="270" y="232" width="420" height="52" rx="10" ry="10" fill="#e8e6e3" stroke="#4a4a4a" stroke-width="2" filter="url(#s)"/>
+  <text x="480" y="254" text-anchor="middle" fill="#1a1a1a" font-size="15" font-weight="600">Skill Registry (Lazy)</text>
+  <text x="480" y="273" text-anchor="middle" fill="#5a5a5a" font-size="11">name · description · allowed-tools · when_to_use · context</text>
+  <line x1="30" y1="308" x2="930" y2="308" stroke="#c0c0c0" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <text x="30" y="326" fill="#6a6a6a" font-size="11" font-weight="600">PHASE 2 — Execution</text>
+  <rect x="30" y="338" width="155" height="48" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2" filter="url(#s)"/>
+  <text x="107" y="359" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">User</text>
+  <text x="107" y="376" text-anchor="middle" fill="#4a4a4a" font-size="11">"Use X skill..."</text>
+  <line x1="185" y1="362" x2="222" y2="362" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="222" y="338" width="168" height="48" rx="10" ry="10" fill="#9dd4c7" stroke="#4a4a4a" stroke-width="2.5" filter="url(#s)"/>
+  <text x="306" y="359" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Model</text>
+  <text x="306" y="376" text-anchor="middle" fill="#4a4a4a" font-size="11">ToolUseBlock: Skill("X")</text>
+  <line x1="390" y1="362" x2="428" y2="362" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="428" y="338" width="170" height="48" rx="10" ry="10" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#s)"/>
+  <text x="513" y="359" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">Orchestration</text>
+  <text x="513" y="376" text-anchor="middle" fill="#4a4a4a" font-size="11">validate + checkPermissions</text>
+  <line x1="598" y1="362" x2="638" y2="362" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="638" y="338" width="292" height="48" rx="10" ry="10" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#s)"/>
+  <text x="784" y="359" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">SkillTool.call()</text>
+  <text x="784" y="376" text-anchor="middle" fill="#4a4a4a" font-size="11">4-step internal + ToolResult return</text>
+  <line x1="784" y1="386" x2="784" y2="410" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <text x="30" y="428" fill="#6a6a6a" font-size="11" font-weight="600">SkillTool.call() Internal Steps</text>
+  <rect x="30" y="436" width="215" height="80" rx="8" ry="8" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.5" filter="url(#s)"/>
+  <text x="137" y="454" text-anchor="middle" fill="#1a1a1a" font-size="12" font-weight="600">processPromptSlashCommand()</text>
+  <text x="137" y="472+0" text-anchor="middle" fill="#5a5a5a" font-size="10">getPromptForCommand()</text>
+  <text x="137" y="472+13" text-anchor="middle" fill="#5a5a5a" font-size="10">substituteArguments()</text>
+  <text x="137" y="472+26" text-anchor="middle" fill="#5a5a5a" font-size="10">!command exec</text>
+  <line x1="245" y1="476" x2="260" y2="476" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="260" y="436" width="215" height="80" rx="8" ry="8" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.5" filter="url(#s)"/>
+  <text x="367" y="454" text-anchor="middle" fill="#1a1a1a" font-size="12" font-weight="600">addInvokedSkill()</text>
+  <text x="367" y="472+0" text-anchor="middle" fill="#5a5a5a" font-size="10">Register to</text>
+  <text x="367" y="472+13" text-anchor="middle" fill="#5a5a5a" font-size="10">session state</text>
+  <line x1="475" y1="476" x2="490" y2="476" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="490" y="436" width="215" height="80" rx="8" ry="8" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.5" filter="url(#s)"/>
+  <text x="597" y="454" text-anchor="middle" fill="#1a1a1a" font-size="12" font-weight="600">registerSkillHooks()</text>
+  <text x="597" y="472+0" text-anchor="middle" fill="#5a5a5a" font-size="10">Register</text>
+  <text x="597" y="472+13" text-anchor="middle" fill="#5a5a5a" font-size="10">Skill-level hooks</text>
+  <line x1="705" y1="476" x2="720" y2="476" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="720" y="436" width="215" height="80" rx="8" ry="8" fill="#ffffff" stroke="#4a4a4a" stroke-width="1.5" filter="url(#s)"/>
+  <text x="827" y="454" text-anchor="middle" fill="#1a1a1a" font-size="12" font-weight="600">Return ToolResult</text>
+  <text x="827" y="472+0" text-anchor="middle" fill="#5a5a5a" font-size="10">data + newMessages</text>
+  <text x="827" y="472+13" text-anchor="middle" fill="#5a5a5a" font-size="10">+ contextModifier</text>
+  <line x1="784" y1="516" x2="784" y2="542" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="430" y="546" width="500" height="48" rx="8" ry="8" fill="#e8e6e3" stroke="#4a4a4a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="680" y="566" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="700">contextModifier: Runtime Permission Grant</text>
+  <text x="680" y="584" text-anchor="middle" fill="#5a5a5a" font-size="11">Dynamically updates alwaysAllowRules — skill declares allowed-tools, granted at runtime</text>
+  <rect x="430" y="612" width="500" height="48" rx="8" ry="8" fill="#9dd4c7" stroke="#4a4a4a" stroke-width="1.5"/>
+  <text x="680" y="632" text-anchor="middle" fill="#1a1a1a" font-size="13" font-weight="600">newMessages: Content Push to Conversation</text>
+  <text x="680" y="650" text-anchor="middle" fill="#5a5a5a" font-size="11">SKILL.md as UserMessage(isMeta=true) — model sees it transparently</text>
+  <line x1="680" y1="660" x2="680" y2="688" stroke="#5a5a5a" stroke-width="1.5" marker-end="url(#ac)"/>
+  <rect x="480" y="692" width="400" height="48" rx="10" ry="10" fill="#9dd4c7" stroke="#4a4a4a" stroke-width="2.5" filter="url(#s)"/>
+  <text x="680" y="713" text-anchor="middle" fill="#1a1a1a" font-size="14" font-weight="600">Model Continues</text>
+  <text x="680" y="730" text-anchor="middle" fill="#4a4a4a" font-size="11">Inline (default): same session | Forked (context:fork): isolated sub-agent</text>
+  <rect x="30" y="760" width="900" height="38" rx="6" ry="6" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+  <text x="480" y="781" text-anchor="middle" fill="#6a6a6a" font-size="12">Inline = same session continues | Forked = sub-agent with isolated budget + tools, result merged back</text>
+  <rect x="30" y="816" width="900" height="70" rx="8" ry="8" fill="#e8e6e3" stroke="#8a8a8a" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <text x="480" y="840" text-anchor="middle" fill="#4a4a4a" font-size="13" font-weight="600">Key Difference: Push vs Pull</text>
+  <text x="480" y="858" text-anchor="middle" fill="#6a6a6a" font-size="12">Anthropic: newMessages pushes SKILL.md into history — model unaware of filesystem — contextModifier grants runtime permissions</text>
+  <text x="480" y="876" text-anchor="middle" fill="#6a6a6a" font-size="12">OpenAI: load_skill() copies files, Read() pulls SKILL.md — model explicitly accesses workspace — no dynamic permission grant</text>
+</svg>

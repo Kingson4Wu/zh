@@ -1,0 +1,79 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 800" width="960" height="800">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+  </style>
+  <defs>
+    <marker id="ac" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#5a5a5a"/>
+    </marker>
+    <marker id="ac-purple" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <polygon points="0 0, 8 4, 0 8" fill="#7c3aed"/>
+    </marker>
+    <filter id="shadow-soft">
+      <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="#0000000a"/>
+    </filter>
+  </defs>
+
+  <rect width="960" height="800" fill="#f8f6f3"/>
+
+  <text x="480" y="30" text-anchor="middle" fill="#1a1a1a" font-size="18" font-weight="700">Anthropic Agent Orchestration Flow</text>
+  <text x="480" y="50" text-anchor="middle" fill="#6a6a6a" font-size="12">queryLoop() — Minimal I/O Router</text>
+
+  <rect x="370" y="58" width="220" height="44" rx="10" ry="10" fill="#a8c5e6" stroke="#4a4a4a" stroke-width="2.5" filter="url(#shadow-soft)"/>
+  <text x="480" y="85" text-anchor="middle" fill="#1a1a1a" font-size="15" font-weight="600">queryLoop()</text>
+  <line x1="480" y1="102" x2="480" y2="126" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+
+  <rect x="240" y="130" width="480" height="58" rx="8" ry="8" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#shadow-soft)"/>
+  <text x="260" y="153" fill="#1a1a1a" font-size="14" font-weight="700">1. Prepare Context</text>
+  <text x="260" y="172" fill="#5a5a5a" font-size="11">Compress history (snip / microcompact / autocompact / collapse)</text>
+  <text x="260" y="185" fill="#5a5a5a" font-size="11">Trim to context window budget</text>
+
+  <line x1="480" y1="188" x2="480" y2="212" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <rect x="240" y="216" width="480" height="58" rx="8" ry="8" fill="#9dd4c7" stroke="#4a4a4a" stroke-width="2.5" filter="url(#shadow-soft)"/>
+  <text x="260" y="239" fill="#1a1a1a" font-size="14" font-weight="700">2. Call Model</text>
+  <text x="260" y="258" fill="#5a5a5a" font-size="11">Send: system prompt + history + user input</text>
+  <text x="260" y="271" fill="#5a5a5a" font-size="11">JSON stream via CLI binary (stdin/stdout)</text>
+
+  <line x1="480" y1="274" x2="480" y2="298" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <rect x="240" y="302" width="480" height="58" rx="8" ry="8" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#shadow-soft)"/>
+  <text x="260" y="325" fill="#1a1a1a" font-size="14" font-weight="700">3. Parse Response</text>
+  <text x="260" y="344" fill="#5a5a5a" font-size="11">ToolUseBlock → route to tool executor</text>
+  <text x="260" y="357" fill="#5a5a5a" font-size="11">TextBlock → display to user; no tool_use → finalize</text>
+
+  <line x1="480" y1="360" x2="480" y2="384" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <polygon points="480,388 540,426 480,464 420,426" fill="#ffffff" stroke="#4a4a4a" stroke-width="2.5" filter="url(#shadow-soft)"/>
+  <text x="480" y="430" text-anchor="middle" fill="#1a1a1a" font-size="14" font-weight="700">tool_use?</text>
+
+  <line x1="420" y1="426" x2="300" y2="426" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <text x="355" y="418" text-anchor="middle" fill="#5a5a5a" font-size="12">No</text>
+  <rect x="130" y="400" width="170" height="50" rx="8" ry="8" fill="#e8e6e3" stroke="#4a4a4a" stroke-width="2" filter="url(#shadow-soft)"/>
+  <text x="215" y="424" text-anchor="middle" fill="#1a1a1a" font-size="14" font-weight="600">Final Output</text>
+  <text x="215" y="442" text-anchor="middle" fill="#5a5a5a" font-size="11">Return ResultMessage</text>
+
+  <line x1="540" y1="426" x2="640" y2="426" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <text x="595" y="418" text-anchor="middle" fill="#5a5a5a" font-size="12">Yes</text>
+  <rect x="650" y="380" width="280" height="90" rx="8" ry="8" fill="#f4e4c1" stroke="#4a4a4a" stroke-width="2" filter="url(#shadow-soft)"/>
+  <text x="660" y="403" fill="#1a1a1a" font-size="14" font-weight="700">4. Execute Tools</text>
+  <text x="660" y="421" fill="#5a5a5a" font-size="11">Permission check (mode + hooks + rules)</text>
+  <text x="660" y="436" fill="#5a5a5a" font-size="11">Run tool → collect ToolResult</text>
+  <text x="660" y="451" fill="#5a5a5a" font-size="11">SkillTool: newMessages + contextModifier</text>
+  <text x="660" y="466" fill="#7a7a7a" font-size="10">runtime permission grant via contextModifier</text>
+
+  <line x1="790" y1="470" x2="790" y2="494" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <line x1="790" y1="494" x2="520" y2="494" stroke="#5a5a5a" stroke-width="2"/>
+  <line x1="520" y1="494" x2="520" y2="518" stroke="#5a5a5a" stroke-width="2" marker-end="url(#ac)"/>
+  <rect x="280" y="522" width="480" height="56" rx="8" ry="8" fill="#9dd4c7" stroke="#4a4a4a" stroke-width="2.5" filter="url(#shadow-soft)"/>
+  <text x="300" y="545" fill="#1a1a1a" font-size="14" font-weight="700">5. Inject Results &amp; Continue Loop</text>
+  <text x="300" y="563" fill="#5a5a5a" font-size="11">ToolResult appended as ToolResultBlock to conversation history</text>
+  <text x="300" y="576" fill="#5a5a5a" font-size="11">Loop back to Step 1 (context prep for next turn)</text>
+
+  <path d="M 280 550 L 100 550 L 100 90 L 370 90" fill="none" stroke="#7c3aed" stroke-width="2" stroke-dasharray="6,4" marker-end="url(#ac-purple)"/>
+  <text x="115" y="543" fill="#7c3aed" font-size="12" font-weight="600">loop back</text>
+
+  <rect x="30" y="604" width="900" height="50" rx="8" ry="8" fill="#e8e6e3" stroke="#8a8a8a" stroke-width="1" stroke-dasharray="5,3"/>
+  <text x="480" y="625" text-anchor="middle" fill="#4a4a4a" font-size="13" font-weight="600">Core: No ReAct, no Plan-and-Execute — all strategy in prompts</text>
+  <text x="480" y="643" text-anchor="middle" fill="#6a6a6a" font-size="12">Model reads system prompt + tool descriptions, decides. Orchestration = passive I/O router.</text>
+
+  <rect x="30" y="666" width="900" height="38" rx="6" ry="6" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+  <text x="480" y="688" text-anchor="middle" fill="#6a6a6a" font-size="12">Terminates: no tool_use | max_turns | user interrupt | hook block | token budget | API error</text>
+</svg>

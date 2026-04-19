@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 780" width="960" height="780">
+  <style>
+    text { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica Neue, sans-serif; }
+  </style>
+  <defs>
+    <marker id="ao" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#71717a"/>
+    </marker>
+    <marker id="ao-green" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#10a37f"/>
+    </marker>
+  </defs>
+
+  <rect width="960" height="780" fill="#ffffff"/>
+
+  <text x="480" y="30" text-anchor="middle" fill="#0d0d0d" font-size="18" font-weight="600">OpenAI Agent Orchestration Flow</text>
+  <text x="480" y="50" text-anchor="middle" fill="#6e6e80" font-size="12">Runner.run() — Model decides everything: tool / handoff / stop</text>
+
+  <rect x="370" y="58" width="220" height="44" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <rect x="370" y="58" width="4" height="44" rx="2" ry="2" fill="#10a37f"/>
+  <text x="480" y="85" text-anchor="middle" fill="#0d0d0d" font-size="15" font-weight="600">Runner.run()</text>
+  <line x1="480" y1="102" x2="480" y2="126" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+
+  <rect x="240" y="130" width="480" height="58" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <rect x="240" y="130" width="4" height="58" rx="2" ry="2" fill="#10a37f"/>
+  <text x="260" y="153" fill="#0d0d0d" font-size="14" font-weight="600">1. prepare_agent()</text>
+  <text x="260" y="172" fill="#6e6e80" font-size="11">clone_capabilities() — deep copy per-turn state</text>
+  <text x="260" y="185" fill="#6e6e80" font-size="11">ensure_session() + capability.bind(session)</text>
+
+  <line x1="480" y1="188" x2="480" y2="212" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <rect x="240" y="216" width="480" height="50" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <text x="260" y="239" fill="#0d0d0d" font-size="14" font-weight="600">2. get_all_tools()</text>
+  <text x="260" y="258" fill="#6e6e80" font-size="11">agent.tools + MCP tools + capability_tools + handoff tools</text>
+
+  <line x1="480" y1="266" x2="480" y2="290" stroke="#10a37f" stroke-width="1.5" marker-end="url(#ao-green)"/>
+  <rect x="240" y="294" width="480" height="58" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <rect x="240" y="294" width="4" height="58" rx="2" ry="2" fill="#10a37f"/>
+  <text x="260" y="317" fill="#0d0d0d" font-size="14" font-weight="600">3. run_single_turn()</text>
+  <text x="260" y="336" fill="#6e6e80" font-size="11">Call OpenAI API, stream response</text>
+  <text x="260" y="349" fill="#6e6e80" font-size="11">Parse into RunItem: message / function_call / handoff_call</text>
+
+  <line x1="480" y1="352" x2="480" y2="376" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <rect x="240" y="380" width="480" height="58" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <text x="260" y="403" fill="#0d0d0d" font-size="14" font-weight="600">4. process_model_response()</text>
+  <text x="260" y="422" fill="#6e6e80" font-size="11">Classify by output.type — no decision logic</text>
+  <text x="260" y="435" fill="#6e6e80" font-size="11">router dispatches to corresponding executor</text>
+
+  <line x1="480" y1="438" x2="480" y2="462" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <polygon points="480,466 545,508 480,550 415,508" fill="#ffffff" stroke="#e5e5e5" stroke-width="2"/>
+  <text x="480" y="512" text-anchor="middle" fill="#0d0d0d" font-size="14" font-weight="600">Next Step?</text>
+
+  <line x1="415" y1="508" x2="290" y2="508" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <text x="348" y="500" text-anchor="middle" fill="#6e6e80" font-size="11">FinalOutput</text>
+  <rect x="130" y="482" width="160" height="50" rx="8" ry="8" fill="#fafafa" stroke="#e5e5e5" stroke-width="1.5"/>
+  <text x="210" y="506" text-anchor="middle" fill="#0d0d0d" font-size="13" font-weight="600">Return RunResult</text>
+  <text x="210" y="524" text-anchor="middle" fill="#6e6e80" font-size="11">Loop terminates</text>
+
+  <line x1="480" y1="550" x2="480" y2="580" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <text x="505" y="568" text-anchor="middle" fill="#6e6e80" font-size="11">Handoff</text>
+  <rect x="390" y="584" width="180" height="44" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <text x="480" y="608" text-anchor="middle" fill="#0d0d0d" font-size="13" font-weight="600">Switch current_agent</text>
+  <text x="480" y="624" text-anchor="middle" fill="#6e6e80" font-size="11">continue loop</text>
+
+  <line x1="545" y1="508" x2="680" y2="508" stroke="#71717a" stroke-width="1.5" marker-end="url(#ao)"/>
+  <text x="618" y="500" text-anchor="middle" fill="#6e6e80" font-size="11">RunAgain</text>
+  <rect x="680" y="482" width="250" height="50" rx="8" ry="8" fill="#ffffff" stroke="#e5e5e5" stroke-width="1.5"/>
+  <text x="805" y="506" text-anchor="middle" fill="#0d0d0d" font-size="13" font-weight="600">Append tool results</text>
+  <text x="805" y="524" text-anchor="middle" fill="#6e6e80" font-size="11">current_turn++, check max_turns</text>
+
+  <path d="M 805 482 L 805 130 L 720 130" fill="none" stroke="#10a37f" stroke-width="1.5" stroke-dasharray="5,3" marker-end="url(#ao-green)"/>
+  <line x1="720" y1="130" x2="720" y2="188" stroke="#10a37f" stroke-width="1.5"/>
+  <text x="820" y="300" fill="#10a37f" font-size="12" font-weight="600" transform="rotate(90,820,300)">while True loop</text>
+
+  <rect x="30" y="660" width="900" height="50" rx="8" ry="8" fill="#fafafa" stroke="#e5e5e5" stroke-width="1" stroke-dasharray="4,3"/>
+  <text x="480" y="681" text-anchor="middle" fill="#0d0d0d" font-size="13" font-weight="600">Core: Model decides everything — SDK is a passive router</text>
+  <text x="480" y="699" fill="#6e6e80" font-size="12">No ReAct, no Plan-and-Execute — all strategy in system prompt + tool descriptions</text>
+
+  <rect x="30" y="722" width="900" height="34" rx="6" ry="6" fill="#ffffff" stroke="#e5e5e5" stroke-width="1"/>
+  <text x="480" y="742" text-anchor="middle" fill="#6e6e80" font-size="12">tool_use_behavior: "run_llm_again" (default) | "stop_on_first_tool" | custom stop condition</text>
+</svg>
