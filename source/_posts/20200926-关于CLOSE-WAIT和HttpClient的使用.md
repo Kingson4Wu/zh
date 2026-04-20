@@ -4,7 +4,7 @@ date: 2020-09-26 13:58:25
 tags: [TCP,CLOSE_WAIT]
 ---
 
-![](20200926-关于CLOSE-WAIT和HttpClient的使用/TCP三次握手四次挥手.png)
+![](TCP三次握手四次挥手.png)
 ![](tcp_normal_close.png)
 
 ESTABLISHED 表示正在进行网络连接的数量 
