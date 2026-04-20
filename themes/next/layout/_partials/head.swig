@@ -77,10 +77,10 @@
   <link rel="apple-touch-icon" sizes="180x180" href="{{ url_for(theme.favicon.apple_touch_icon) }}?v={{ theme.version }}">
 {% endif %}
 {% if theme.favicon.medium %}
-  <link rel="icon" type="image/png" sizes="32x32" href="{{ url_for(theme.favicon.medium) }}?v={{ theme.version }}">
+  <link rel="icon" sizes="32x32" href="{{ url_for(theme.favicon.medium) }}?v={{ theme.version }}">
 {% endif %}
 {% if theme.favicon.small %}
-  <link rel="icon" type="image/png" sizes="16x16" href="{{ url_for(theme.favicon.small) }}?v={{ theme.version }}">
+  <link rel="icon" sizes="16x16" href="{{ url_for(theme.favicon.small) }}?v={{ theme.version }}">
 {% endif %}
 {% if theme.favicon.safari_pinned_tab %}
   <link rel="mask-icon" href="{{ url_for(theme.favicon.safari_pinned_tab) }}?v={{ theme.version }}" color="{{ theme.android_chrome_color }}">
