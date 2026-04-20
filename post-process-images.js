@@ -107,8 +107,8 @@ for (const htmlPath of htmlFiles) {
       return match; // already has slug
     }
 
-    // Build correct src: / + articleSlug + / + filename
-    const correctSrc = '/' + articleSlug + '/' + decodedFilename;
+    // Build correct src: /zh/ + articleSlug + / + filename
+    const correctSrc = '/zh/' + articleSlug + '/' + decodedFilename;
     if (srcValue === correctSrc) return match;
 
     fixCount++;
