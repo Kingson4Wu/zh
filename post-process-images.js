@@ -11,6 +11,23 @@ const { join, extname, dirname } = require('path');
  */
 const publicDir = join(process.cwd(), 'public');
 
+// Copy shared photo directory (Hexo doesn't auto-copy from _posts subdirs)
+const sourcePhotoDir = join(process.cwd(), 'source', '_posts', 'photo');
+const publicPhotoDir = join(publicDir, 'photo');
+if (fs.existsSync(sourcePhotoDir)) {
+  if (!fs.existsSync(publicPhotoDir)) {
+    fs.mkdirSync(publicPhotoDir, { recursive: true });
+  }
+  const photoFiles = fs.readdirSync(sourcePhotoDir);
+  for (const f of photoFiles) {
+    const src = join(sourcePhotoDir, f);
+    const dst = join(publicPhotoDir, f);
+    if (fs.statSync(src).isFile() && !fs.existsSync(dst)) {
+      fs.copyFileSync(src, dst);
+    }
+  }
+}
+
 // Phase 1: build a map of all image files to their article slug
 const imageToArticleSlug = new Map(); // filename → article slug (e.g. "2020/08/31/...slug...")
 
