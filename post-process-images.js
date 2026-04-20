@@ -5,16 +5,64 @@ const { join, extname, dirname } = require('path');
 
 /**
  * Post-process hexo generated HTML files to fix image src paths.
- * For each index.html, look for images in the same directory and fix src attributes:
- * - Missing article slug -> add slug
- * - URL-encoded Chinese -> raw Chinese filename
+ * - Article index.html: images in same dir → add article slug if missing
+ * - Home page (index.html): find which article dir contains each image → use that slug
+ * - URL-encoded Chinese → raw Chinese filename
  */
 const publicDir = join(process.cwd(), 'public');
 
+// Phase 1: build a map of all image files to their article slug
+const imageToArticleSlug = new Map(); // filename → article slug (e.g. "2020/08/31/...slug...")
+
+function scanForImages(dir, currentSlug) {
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch (e) {
+    return;
+  }
+
+  for (const entry of entries) {
+    const fullPath = join(dir, entry.name);
+    if (entry.isDirectory()) {
+      // Determine article slug: if this dir has an index.html, it's an article dir
+      // Otherwise, propagate current slug
+      let entries2;
+      try {
+        entries2 = fs.readdirSync(fullPath);
+      } catch (e) {
+        continue;
+      }
+      const hasIndex = entries2.includes('index.html');
+      const newSlug = hasIndex ? fullPath.replace(publicDir + '/', '') : currentSlug;
+      scanForImages(fullPath, newSlug);
+    } else {
+      const ext = extname(entry.name).toLowerCase();
+      if (['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'].includes(ext)) {
+        imageToArticleSlug.set(entry.name, currentSlug);
+      }
+    }
+  }
+}
+
+scanForImages(publicDir, '');
+
+// Debug: check some images
+const checkImages = ['anthropic-skill-unified.png', 'MHA_Consul_MySQL切换.png', 'avatar.png'];
+for (const img of checkImages) {
+  console.log(`${img} -> ${imageToArticleSlug.get(img) || 'NOT FOUND'}`);
+}
+
+// Phase 2: process all HTML files
 const htmlFiles = [];
 
 function walkDir(dir) {
-  const entries = fs.readdirSync(dir, { withFileTypes: true });
+  let entries;
+  try {
+    entries = fs.readdirSync(dir, { withFileTypes: true });
+  } catch (e) {
+    return;
+  }
   for (const entry of entries) {
     const fullPath = join(dir, entry.name);
     if (entry.isDirectory()) {
@@ -27,33 +75,19 @@ function walkDir(dir) {
 
 walkDir(publicDir);
 
-console.log(`Found ${htmlFiles.length} HTML files to process`);
+console.log(`\nProcessing ${htmlFiles.length} HTML files`);
 
+let fixCount = 0;
 for (const htmlPath of htmlFiles) {
   const dir = dirname(htmlPath);
-  const dirName = dir.replace(publicDir + '/', ''); // e.g. "2020/08/31/20200831-guan-yu-mha..."
-
-  // Get all image files in this directory
-  let imageFiles;
-  try {
-    imageFiles = fs.readdirSync(dir).filter(f => {
-      const ext = extname(f).toLowerCase();
-      return ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'].includes(ext);
-    });
-  } catch (e) {
-    continue;
-  }
-
-  if (imageFiles.length === 0) continue;
-
-  const actualFilenames = new Set(imageFiles);
+  const dirName = dir.replace(publicDir + '/', '');
 
   let html = fs.readFileSync(htmlPath, 'utf8');
   const originalHtml = html;
 
   const imgSrcPtn = /src="([^"]+\.(?:png|jpg|jpeg|gif|svg|webp))"/gi;
+
   html = html.replace(imgSrcPtn, (match, srcValue) => {
-    // Decode to find the actual filename
     let decodedSrc;
     try {
       decodedSrc = decodeURIComponent(srcValue);
@@ -64,43 +98,20 @@ for (const htmlPath of htmlFiles) {
     const decodedFilename = decodedSrc.split('/').pop();
     if (!decodedFilename) return match;
 
-    // Find actual filename: exact match or URL-decoded match
-    let actualFilename = null;
-    if (actualFilenames.has(decodedFilename)) {
-      actualFilename = decodedFilename;
-    } else {
-      // Try URL-decode of each actual filename
-      for (const file of imageFiles) {
-        try {
-          if (decodeURIComponent(file) === decodedFilename) {
-            actualFilename = file;
-            break;
-          }
-        } catch (e) {}
-      }
+    // Find article slug for this image
+    const articleSlug = imageToArticleSlug.get(decodedFilename);
+    if (!articleSlug) return match; // external or uploads, leave unchanged
+
+    // Is src already correct?
+    if (srcValue.includes(articleSlug)) {
+      return match; // already has slug
     }
 
-    if (!actualFilename) return match;
-
-    // Does src already include the dirName (article slug path)?
-    const srcHasSlug = srcValue.includes(dirName);
-    let correctSrc;
-
-    if (srcHasSlug) {
-      // Replace only the filename (slug already present, but filename might be URL-encoded)
-      const lastSlash = srcValue.lastIndexOf('/');
-      correctSrc = srcValue.substring(0, lastSlash) + '/' + actualFilename;
-    } else {
-      // Add slug: /zh/ + dirName + / + filename
-      // srcValue looks like "/zh/foo.png" or "/zh/2020/08/31/old-slug/foo.png"
-      // We want: /zh/dirName/foo.png
-      const firstSlash = srcValue.indexOf('/');
-      const secondSlash = srcValue.indexOf('/', firstSlash + 1);
-      const basePath = srcValue.substring(0, secondSlash);
-      correctSrc = basePath + '/' + dirName + '/' + actualFilename;
-    }
-
+    // Build correct src: / + articleSlug + / + filename
+    const correctSrc = '/' + articleSlug + '/' + decodedFilename;
     if (srcValue === correctSrc) return match;
+
+    fixCount++;
     return 'src="' + correctSrc + '"';
   });
 
@@ -110,4 +121,5 @@ for (const htmlPath of htmlFiles) {
   }
 }
 
+console.log(`Total fixes: ${fixCount}`);
 console.log('Done');
