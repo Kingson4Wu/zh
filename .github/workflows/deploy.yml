@@ -41,6 +41,7 @@ jobs:
         run: |
           npx hexo clean
           npx hexo generate
+          node post-process-images.js
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
