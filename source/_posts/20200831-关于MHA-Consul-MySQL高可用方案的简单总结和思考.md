@@ -8,7 +8,7 @@ tags:  [MHA,Consul,MySQL,HA,容灾,半同步复制]
 MHA + Consul + MySQL的高可用方案，网上已经有很多资料，这里只是做一下简要的总结和思考。文章部分文字摘自Reference中的链接。
 直接先上一张图
 
-![](20200831-关于MHA-Consul-MySQL高可用方案的简单总结和思考/MHA_Consul_MySQL切换.png)
+![](MHA_Consul_MySQL切换.png)
 
 1. 图中的灾备架构适用于同城主备架构的业务，比如金钱业务；
 2. DB层是一主多从，主库至在其中一个机房，并在DB集群上搭建跨IDC的MHA；同样Consul也是跨IDC的集群；
@@ -103,15 +103,15 @@ MHA工作原理总结为以下几条：
 	- MGR内部实现了分布式数据一致性协议，paxos通过其来保证数据一致性。
 
 ### after_commit VS after_sync
-![](20200831-关于MHA-Consul-MySQL高可用方案的简单总结和思考/after_commit.png)
-![](20200831-关于MHA-Consul-MySQL高可用方案的简单总结和思考/after_sync.png)
+![](after_commit.png)
+![](after_sync.png)
 
 - after_commit：master把每一个事务写到二进制日志并保存到磁盘上，并且提交（commit）事务，再把事务发送给从库，开始等待slave的应答。响应后master返回结果给客户端，客户端才可继续。
 - after_sync  ：master把每一个事务写到二进制日志并保存磁盘上，并且把事务发送给从库，开始等待slave的应答。确认slave响应后，再提交（commit）事务到存储引擎，并返回结果给客户端，客户端才可继续。
 - 半同步和增强半同步都是等待slave的ACK后才给客户端返回成功（也就是整个流程完成）
 
 ### 总结
-![](20200831-关于MHA-Consul-MySQL高可用方案的简单总结和思考/MySQL_copy.png)
+![](MySQL_copy.png)
 
 + 一致性要求高的，比如金融类的（相比其他业务TPS较低），可以考虑开启增强半同步复制
 
@@ -197,7 +197,7 @@ MHA工作原理总结为以下几条：
 4. 发生切换事件之后，在确定数据已经无异常之前，需要防止再自动切回去，造成严重的数据异常。所以一般情况下，只能自动切一次，直到人工介入确认无异常，重新设置为自动切模式。当然，有完善的监控比对数据异常机制的情况下，可以考虑做成自动化，无需依赖人工介入。
 
 ### MHA切换之后，主库禁写后，现有的连接是否还能继续写入?
-![](20200831-关于MHA-Consul-MySQL高可用方案的简单总结和思考/MySQL_权限.png)
+![](MySQL_权限.png)
 mha切库禁写时，直接锁住整个实例，新操作无法写入，直接就设置read_only。
 
 ### 自动切的时机如何把握？

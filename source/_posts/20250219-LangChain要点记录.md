@@ -6,7 +6,7 @@ tags: [AI, LangChain, LLM]
 
 >> 基于书籍简单记录要点
 
-![](20250219-LangChain要点记录/LangChain.png)
+![](LangChain.png)
 
 
 # LangChain 提供了多种模板供选择
