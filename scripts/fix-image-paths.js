@@ -1,16 +1,12 @@
 'use strict';
 
-const fs = require('hexo-fs');
+const fs = require('fs');
+const hexoFs = require('hexo-fs');
 const { join, extname } = require('path');
 
 /**
- * Fix for permalink_pinyin + post_asset_folder:
- *
- * When post_asset_folder is enabled, the marked renderer resolves image paths
- * using Post.path (which permalink_pinyin converts to pinyin). But the asset
- * folder on disk uses the original Chinese folder name (derived from the md
- * filename, with different punctuation). This filter copies assets from the
- * Chinese-named source folder to the pinyin public URL path after generation.
+ * Copy images from Chinese-named asset folder to pinyin URL path.
+ * HTML src fixing is handled by post-process-images.js (run after hexo generate).
  */
 hexo.extend.filter.register('after_generate', async function () {
   const Post = this.model('Post');
@@ -23,14 +19,29 @@ hexo.extend.filter.register('after_generate', async function () {
     if (!post.source.startsWith('source/_posts/') && !post.source.startsWith('_posts/')) continue;
     const postPinyinPath = post.path.replace(/\.html?$/, '').replace(/\/$/, '');
 
+    // Derive Chinese asset folder from post source
     const chineseFolderMd = post.source.replace(/^source\/_posts\//, '').replace(/^_posts\//, '').replace(/\.md$/, '');
-    const chineseFolder = chineseFolderMd.replace(/：/, '-');
-    const chineseAssetDir = join(sourcePostsDir, chineseFolder);
+    let chineseFolder = chineseFolderMd.replace(/：/g, '-');
+
+    let chineseAssetDir = join(sourcePostsDir, chineseFolder);
+    if (!fs.existsSync(chineseAssetDir)) {
+      chineseFolder = chineseFolderMd.replace(/[：:：]/g, '-');
+      chineseAssetDir = join(sourcePostsDir, chineseFolder);
+      if (!fs.existsSync(chineseAssetDir)) {
+        continue;
+      }
+    }
+
     const targetDir = join(publicDir, postPinyinPath);
 
-    if (!fs.existsSync(chineseAssetDir)) continue;
+    // List and copy image files
+    let allFiles;
+    try {
+      allFiles = hexoFs.listDirSync(chineseAssetDir);
+    } catch (e) {
+      continue;
+    }
 
-    const allFiles = fs.listDirSync(chineseAssetDir);
     const files = allFiles.filter(f => {
       const ext = extname(f).toLowerCase();
       return ['.png', '.jpg', '.jpeg', '.gif', '.svg', '.webp'].includes(ext);
@@ -39,9 +50,8 @@ hexo.extend.filter.register('after_generate', async function () {
     for (const file of files) {
       const srcPath = join(chineseAssetDir, file);
       const dstPath = join(targetDir, file);
-
       if (fs.existsSync(srcPath) && !fs.existsSync(dstPath)) {
-        await fs.copyFile(srcPath, dstPath);
+        await hexoFs.copyFile(srcPath, dstPath);
       }
     }
   }

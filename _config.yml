@@ -140,6 +140,9 @@ sequence:
 include:
   - .nojekyll
 
+marked:
+  postAsset: true
+
 permalink_pinyin:
   enable: true
   separator: '-' # default: '-'
